@@ -6,3 +6,4 @@ A starter template for WPF Apps that illustrates:
 - Modules split into separate projects
 - Object creation using Dependency Injection (Autofac)
 - Two way data binding
+- Show and Hide dialog using events

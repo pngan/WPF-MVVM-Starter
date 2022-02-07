@@ -25,11 +25,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="32" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="32" />
         </Grid.RowDefinitions>
         <TextBox x:Name="NameBox"
                  Grid.Row="0"
                  Text="{Binding Name,
                                 UpdateSourceTrigger=PropertyChanged}" />
         <TextBlock Grid.Row="2" Text="{Binding Greeting}" />
+        <Button Command="{Binding ShowMessageDialogCommand}" Grid.Row="3" Width="100" HorizontalAlignment="Left">Message</Button>
     </Grid>
 </Window>

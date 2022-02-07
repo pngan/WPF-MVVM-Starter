@@ -1,5 +1,3 @@
-using System;
-
 namespace Model
 {
     public class GreetingArgs : EventArgs

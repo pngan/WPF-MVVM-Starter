@@ -1,4 +1,7 @@
-﻿using Model;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using Model;
+using System.Windows.Input;
 
 namespace ViewModel
 {
@@ -7,14 +10,19 @@ namespace ViewModel
         void Start();
     }
 
-    public class MainViewModel : ViewModelBase, IMainViewModel
+    public class MainViewModel : ObservableObject, IMainViewModel
     {
         private readonly IMainModel m_model;
+        private readonly IMessageViewModel m_messageDialogViewModel;
 
-        public MainViewModel(IMainModel model)
+
+        public MainViewModel(IMainModel model, IMessageViewModel messageDialogViewModel)
         {
             m_model = model;
+            m_messageDialogViewModel = messageDialogViewModel;
             m_model.OnGreetingChanged += OnGreetingChanged;
+
+            ShowMessageDialogCommand = new RelayCommand(m_messageDialogViewModel.ShowMessage);
         }
 
         private void OnGreetingChanged(object sender, GreetingArgs e)
@@ -44,7 +52,10 @@ namespace ViewModel
                 OnPropertyChanged("Greeting");
             }
         }
-        
+
+
+        public ICommand ShowMessageDialogCommand { get; set; }
+
         public void Start()
         {
             m_model.Start();

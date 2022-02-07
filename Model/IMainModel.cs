@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Model
+﻿namespace Model
 {
     public interface IMainModel
     {
@@ -8,5 +6,6 @@ namespace Model
         void SetName(string name);
         event EventHandler<GreetingArgs> OnGreetingChanged;
 
+        string Name { get; }
     }
 }

@@ -20,8 +20,12 @@ namespace WPF_MVVM_Starter
 
         private void RegisterDependencies(ContainerBuilder builder)
         {
-            builder.RegisterType<MainModel>().As<IMainModel>();
-            builder.RegisterType<MainViewModel>().As<IMainViewModel>();
+
+            builder.RegisterType<MessageViewModel>().As<IMessageViewModel>().SingleInstance();
+            builder.RegisterType<MessageDialog>();
+
+            builder.RegisterType<MainModel>().As<IMainModel>().SingleInstance();
+            builder.RegisterType<MainViewModel>().As<IMainViewModel>().SingleInstance();
             builder.RegisterType<MainWindow>();
         }
 
